@@ -1,5 +1,5 @@
 import imp
-from msilib.schema import File
+#from msilib.schema import File
 from tkinter import CENTER
 from turtle import position
 from pyparsing import And
