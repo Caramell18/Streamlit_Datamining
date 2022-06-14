@@ -15,7 +15,7 @@ import pandas as pd
 
 st.title('------Aplikasi Projek Data Mining------')
 st.markdown ('* **Nama Kolom harus sesuai pada dataset**')
-st.markdown ('* **Web Ini Untuk enghitung Akurasi**')
+st.markdown ('* **Web Ini Untuk Menghitung Akurasi**')
 st.markdown ('* **Untuk saat ini web ini hanya bisa menggunakan dataset yang disediakan**')
 
 #========================= Input Dataset ==========================
