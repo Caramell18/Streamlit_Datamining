@@ -1,7 +1,7 @@
 import imp
-from msilib.schema import File
-from tkinter import CENTER
-from turtle import position
+# from msilib.schema import File
+# from tkinter import CENTER
+# from turtle import position
 from pyparsing import And
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
