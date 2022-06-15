@@ -82,7 +82,7 @@ if page == 'KNN':
     
             # Imported taxi_data.csv
             import pandas as pd
-            taxi_data = pd.read_csv(r'E:\datamining\Datamining_Tugas\data\taxi_data.csv')
+            taxi_data = pd.read_csv('taxi_data.csv')
 
             # Filtered passenger_count
             taxi_data = taxi_data[taxi_data['passenger_count'].notnull()]
