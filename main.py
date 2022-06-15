@@ -12,7 +12,6 @@ from sklearn.metrics import confusion_matrix
 from sklearn.decomposition import PCA
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 
 st.sidebar.header('Menu')
@@ -79,17 +78,48 @@ if page == 'KNN':
             
             st.write(f'Akurasi = ',acc)
 
-            #===============================Tabel Pyplot===============================
-            st.write('Berikut Tabel nya :')
-            sel_col,displ_col = st.columns(2)
-            pca = PCA(2)
-            x_projected = pca.fit_transform(x)
-            x1 = x_projected[:,0]
-            x2 = x_projected[:,1]
-            fig = plt.figure()
-            plt.scatter(x1,x2,c=y,alpha=0.8, cmap='viridis')
-            plt.colorbar()
-            sel_col.pyplot(fig)
+            from mitosheet import *; register_analysis("id-rltampzvvc");
+    
+            # Imported taxi_data.csv
+            import pandas as pd
+            taxi_data = pd.read_csv(r'E:\datamining\Datamining_Tugas\data\taxi_data.csv')
+
+            # Filtered passenger_count
+            taxi_data = taxi_data[taxi_data['passenger_count'].notnull()]
+
+            # Filtered RatecodeID
+            taxi_data = taxi_data[taxi_data['RatecodeID'].notnull()]
+
+            # Filtered DOLocationID
+            taxi_data = taxi_data[taxi_data['DOLocationID'].notnull()]
+
+            import plotly.express as px
+
+            # Filter the dataframe so that it does not crash the browser
+            taxi_data_filtered = taxi_data.head(1000)
+
+            # Construct the graph and style it. Further customize your graph by editing this code.
+            # See Plotly Documentation for help: https://plotly.com/python/plotly-express/
+            fig = px.histogram(taxi_data_filtered, x=['passenger_count', 'RatecodeID'], y='DOLocationID')
+            fig.update_layout(
+                title='passenger_count, RatecodeID, DOLocationID (first 1000 rows) histogram', 
+                xaxis = dict(
+                    rangeslider = dict(
+                        visible=True, 
+                        thickness=0.05
+                    )
+                ), 
+                yaxis = dict(
+
+                ), 
+                barmode='group', 
+                paper_bgcolor='#0a0a0a', 
+                showlegend=True
+            )
+            fig.show(renderer="iframe")
+            
+            st.write(fig)
+            
 else:
     st.title('------Aplikasi Projek Data Mining------')
     st.markdown ('* **Nama Kolom harus sesuai pada dataset**')
