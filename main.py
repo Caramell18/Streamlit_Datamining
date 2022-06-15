@@ -16,11 +16,12 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 st.sidebar.header('Menu')
-page = st.sidebar.selectbox("Pilih Page Dataset",('Dataset Angka Kelahiran','Dataset Taxi'))
-if page == 'Dataset Angka Kelahiran':
+page = st.sidebar.selectbox("Pilih Page Dataset",('KNN','Random Forest'))
+
+if page == 'KNN':
     st.title('------Aplikasi Projek Data Mining------')
     st.markdown ('* **Nama Kolom harus sesuai pada dataset**')
-    st.markdown ('* **Web Ini Untuk enghitung Akurasi**')
+    st.markdown ('* **Web Ini Untuk Menghitung Akurasi**')
     st.markdown ('* **Untuk saat ini web ini hanya bisa menggunakan dataset yang disediakan**')
 
     #========================= Input Dataset ==========================
@@ -61,8 +62,8 @@ if page == 'Dataset Angka Kelahiran':
             )
 
             dataset = df
-            x = dataset.iloc[:, [1,5]].values
-            y = dataset.iloc[:, -1].values
+            x = dataset.iloc[:, [3,5]].values
+            y = dataset.iloc[:, [8]].values
                     
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.25, random_state = 0)
             sc = StandardScaler()
