@@ -37,13 +37,13 @@ if page == 'KNN':
         sel_col,displ_col = st.columns(2)
         displ_col.write('Nama Kolom :')
         displ_col.write(df.columns)
-        input_tabel1 = sel_col.text_input('Masukan kolom Chart pertama','tahun')
-        input_tabel2 = sel_col.text_input('Masukan kolom Chart kedua','bulan')
+        input_tabel = sel_col.text_input('Masukan kolom Chart pertama','VendorID')
         chart_select = sel_col.selectbox('Pilih bentuk Chart :', ('Bar Chart', 'Line Chart'))
-        if input_tabel1 or input_tabel2 and uploaded_file  is not None :
+        
+        if input_tabel and uploaded_file  is not None :
             st.subheader('Berikut data berdasarkan kota dari data di atas :')
-            chart_var_dist = pd.DataFrame(np.random.randn(20,2),columns=[input_tabel1,input_tabel2])
-            # chart_var_dist = pd.DataFrame(df[input_tabel].value_counts())
+            # chart_var_dist = pd.DataFrame(np.random.randn(20,2),columns=[input_tabel1,input_tabel2])
+            chart_var_dist = pd.DataFrame(df[input_tabel].value_counts()).head(30)
             if chart_select == 'Bar Chart':
                 st.bar_chart(chart_var_dist)
             elif chart_select == 'Line Chart' :
@@ -108,16 +108,14 @@ else:
         sel_col, displ_col = st.columns(2)
         displ_col.write('--Nama Kolom Tabel--')
         displ_col.write(df.columns)
-        input_tabel1 = sel_col.text_input(' Masukan kolom Chart pertama  ',)
-        input_tabel2 = sel_col.text_input('  Masukan kolom Chart kedua   ',)
+        input_tabel = sel_col.text_input(' Masukan kolom Chart pertama  ',)
         chart_select = sel_col.selectbox('Pilih bentuk Chart :', ('Bar Chart', 'Line Chart'))
         input_hitungan = sel_col.text_input('Masukan kolom yang akan di hitung ','PULocationID')
         metric = sel_col.selectbox("Pilih Metric",('minkowski', 'euclidean'))
 
-        if input_tabel1 or input_tabel2 and uploaded_file  is not None :
+        if input_tabel and uploaded_file  is not None :
             st.subheader('Berikut data berdasarkan kota dari data di atas :')
-            chart_var_dist = pd.DataFrame(np.random.randn(20,2),columns=[input_tabel1,input_tabel2])
-            # chart_var_dist = pd.DataFrame(df[input_tabel].value_counts())
+            chart_var_dist = pd.DataFrame(df[input_tabel].value_counts()).head(30)
             if chart_select == 'Bar Chart':
                 st.bar_chart(chart_var_dist)
             elif chart_select == 'Line Chart' :
