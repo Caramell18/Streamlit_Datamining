@@ -51,9 +51,11 @@ if page == 'KNN':
             #========================PARAMETER============================    
             sel_col,displ_col = st.columns(2)
             params = dict()
-            K = sel_col.slider('Parameter K', 1,100)
+            limit1 = sel_col.slider('Batas Maximal Parameter K',100,500)
+            limit2 = displ_col.slider('Batas Maximal Parameter P',100,500)
+            K = sel_col.slider('Parameter K', 1, limit1)
             params['K'] = K
-            p = displ_col.slider('Parameter P', 1,100)
+            p = displ_col.slider('Parameter P', 1, limit2)
             params['p'] = p
             metric = st.selectbox(
             "pilih Metric",
@@ -119,7 +121,7 @@ if page == 'KNN':
             fig.show(renderer="iframe")
             
             st.write(fig)
-            
+
 else:
     st.title('------Aplikasi Projek Data Mining------')
     st.markdown ('* **Nama Kolom harus sesuai pada dataset**')
